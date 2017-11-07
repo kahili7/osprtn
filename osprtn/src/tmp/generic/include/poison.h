@@ -1,0 +1,14 @@
+#ifndef GENERIC_POISON_H
+#define GENERIC_POISON_H
+// магические числа и адреса
+
+#ifdef CONFIG_ILLEGAL_POINTER_VALUE
+    #define POISON_POINTER_DELTA _AC(CONFIG_ILLEGAL_POINTER_VALUE, UL)
+#else
+    #define POISON_POINTER_DELTA 0
+#endif
+
+#define LIST_POISON_NEXT  ((void *) 0x00100100 + POISON_POINTER_DELTA)
+#define LIST_POISON_PREV  ((void *) 0x00200200 + POISON_POINTER_DELTA)
+
+#endif /* GENERIC_POISON_H */

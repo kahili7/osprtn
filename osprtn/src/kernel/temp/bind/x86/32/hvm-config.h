@@ -1,0 +1,8 @@
+#ifndef KERNEL_BIND_X86_32_HVM_CONFIG_H
+#define KERNEL_BIND_X86_32_HVM_CONFIG_H
+
+#include DIR_ARCH(x86.h)
+#include DIR_BIND_CPU(offsets.h)
+
+
+#endif /* KERNEL_BIND_X86_32_HVM_CONFIG_H */

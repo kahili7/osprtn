@@ -1,0 +1,55 @@
+#ifndef ARCH_X86_NOPS_H
+#define ARCH_X86_NOPS_H
+
+#define NOP_DS_PREFIX 0x3e
+
+#define GENERIC_NOP1 0x90   //nop
+#define GENERIC_NOP2 0x89,0xf6
+#define GENERIC_NOP3 0x8d,0x76,0x00
+#define GENERIC_NOP4 0x8d,0x74,0x26,0x00
+#define GENERIC_NOP5 GENERIC_NOP1,GENERIC_NOP4
+#define GENERIC_NOP6 0x8d,0xb6,0x00,0x00,0x00,0x00
+#define GENERIC_NOP7 0x8d,0xb4,0x26,0x00,0x00,0x00,0x00
+#define GENERIC_NOP8 GENERIC_NOP1,GENERIC_NOP7
+#define GENERIC_NOP5_ATOMIC NOP_DS_PREFIX,GENERIC_NOP4
+
+#define K8_NOP1 GENERIC_NOP1
+#define K8_NOP2	0x66,K8_NOP1
+#define K8_NOP3	0x66,K8_NOP2
+#define K8_NOP4	0x66,K8_NOP3
+#define K8_NOP5	K8_NOP3,K8_NOP2
+#define K8_NOP6	K8_NOP3,K8_NOP3
+#define K8_NOP7	K8_NOP4,K8_NOP3
+#define K8_NOP8	K8_NOP4,K8_NOP4
+#define K8_NOP5_ATOMIC 0x66,K8_NOP4
+
+#ifdef __ASSEMBLY__
+    #define _ASM_MK_NOP(x) .byte x
+#else
+    #define _ASM_MK_NOP(x)  ".byte " __stringify(x) "\n"
+#endif
+
+#if defined(CONFIG_X86_64)
+    #define ASM_NOP1 _ASM_MK_NOP(K8_NOP1)
+    #define ASM_NOP2 _ASM_MK_NOP(K8_NOP2)
+    #define ASM_NOP3 _ASM_MK_NOP(K8_NOP3)
+    #define ASM_NOP4 _ASM_MK_NOP(K8_NOP4)
+    #define ASM_NOP5 _ASM_MK_NOP(K8_NOP5)
+    #define ASM_NOP6 _ASM_MK_NOP(K8_NOP6)
+    #define ASM_NOP7 _ASM_MK_NOP(K8_NOP7)
+    #define ASM_NOP8 _ASM_MK_NOP(K8_NOP8)
+    #define ASM_NOP5_ATOMIC _ASM_MK_NOP(K8_NOP5_ATOMIC)
+#else
+    #define ASM_NOP1 _ASM_MK_NOP(GENERIC_NOP1)
+    #define ASM_NOP2 _ASM_MK_NOP(GENERIC_NOP2)
+    #define ASM_NOP3 _ASM_MK_NOP(GENERIC_NOP3)
+    #define ASM_NOP4 _ASM_MK_NOP(GENERIC_NOP4)
+    #define ASM_NOP5 _ASM_MK_NOP(GENERIC_NOP5)
+    #define ASM_NOP6 _ASM_MK_NOP(GENERIC_NOP6)
+    #define ASM_NOP7 _ASM_MK_NOP(GENERIC_NOP7)
+    #define ASM_NOP8 _ASM_MK_NOP(GENERIC_NOP8)
+    #define ASM_NOP5_ATOMIC _ASM_MK_NOP(GENERIC_NOP5_ATOMIC)
+#endif
+
+
+#endif /* ARCH_X86_NOPS_H */

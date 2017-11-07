@@ -1,0 +1,9 @@
+#ifndef KERNEL_X86_SYSPAGE_H
+#define KERNEL_X86_SYSPAGE_H
+
+typedef struct _X86_SYSPAGE {
+    SYSPAGE_INFO    SMPInfo;
+    SYSPAGE_INFO    DiskInfo;
+    
+} X86_SYSPAGE, *PX86_SYSPAGE;
+#endif /* KERNEL_X86_SYSPAGE_H */

@@ -1,0 +1,7 @@
+#ifndef KERNEL_BIND_X86_32_OFFSETS_H
+#define KERNEL_BIND_X86_32_OFFSETS_H
+
+// смещение раздела .text 
+#define KERNEL_OFFSET   0xF0000000
+
+#endif /* KERNEL_BIND_X86_32_OFFSETS_H */

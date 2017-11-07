@@ -1,0 +1,9 @@
+#define MM_FLAG_BACKWARDS_COMPAT        0x0001
+#define MM_FLAG_MULTIPLE_DCACHE_LEVELS  0x0002
+#define MM_FLAG_ENFORCE_ALIGNMENT       0x0004
+#define MM_FLAG_LOCKALL                 0x0008
+#define MM_FLAG_SUPERLOCKALL            0x0010
+#define MM_FLAG_VPS                     0x0020
+#define MM_FLAG_PADDR64_SAFE_SYS        0x0040
+#define MM_FLAG_DEFRAGMENT              0x0080
+#define MM_FLAG_AUTOMARK                0x0100

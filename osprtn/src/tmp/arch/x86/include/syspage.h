@@ -1,0 +1,5 @@
+#ifndef ARCH_X86_SYSPAGE_H
+#define ARCH_X86_SYSPAGE_H
+
+
+#endif /* ARCH_X86_SYSPAGE_H */
